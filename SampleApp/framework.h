@@ -3,18 +3,18 @@
 // --------------------------------------------------------------------
 
 #ifndef _UNICODE
-#define _UNICODE
+	#define _UNICODE
 #endif
 #ifndef UNICODE
-#define UNICODE
+	#define UNICODE
 #endif
 
 #include <windows.h>
 #include <tchar.h>
 
 #ifndef WS_OVERLAPPEDWINDOW
-#define WS_OVERLAPPEDWINDOW \
-	WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX
+	#define WS_OVERLAPPEDWINDOW \
+		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX
 #endif
 
 #ifdef UNDER_CE
@@ -34,3 +34,6 @@
 		#define _tWinMain WinMain
 	#endif
 #endif
+
+#define ACTIVATE( msg, onEvent )	case msg: return onEvent( hWnd, wParam, lParam )
+#define RELEASE_GDIOBJ( hObj )		if( hObj != NULL ) { DeleteObject( hObj ); hObj = NULL; }
